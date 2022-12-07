@@ -14,7 +14,7 @@ class Core {
         $url = $this->getUrl();
 
         // look in controllers for first value
-        if (file_exists('../app/controllers/' . ucwords($url[0]). '.php')) {
+        if (is_array($url) && file_exists('../app/controllers/' . ucwords($url[0]). '.php')) {
             // if existe then site as controller
             $this->currentController = ucwords($url[0]);
             // unset 0 index
@@ -31,9 +31,7 @@ class Core {
         if (isset($url[1])) {
             // check to see if method existe in controller
             if (method_exists($this->currentController, $url[1])) {
-
                 $this->currentMethod = $url[1];
-
                 // unset 1 index
                 unset($url[1]);
             }

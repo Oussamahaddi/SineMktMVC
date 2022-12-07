@@ -1,6 +1,5 @@
-
 <?php
 
-    include '../app/bootstrap.php';
+	require_once '../app/bootstrap.php';
 
-    $test = new Core;
+	$index = new Core;

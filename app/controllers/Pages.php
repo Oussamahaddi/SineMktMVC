@@ -5,18 +5,24 @@
 class Pages extends Controller {
 
     public function __construct() {
-
+        
     }
     public function index() {
-        $data = [
-            'title' => 'Hellow Oussama',
-            'description' => 'my name is oussama haddi and i love js'
-        ];
-        $this->view('pages/index', $data);
+        $this->view('index');
     }
-    public function about($id) {
-        echo $id;
+    public function blog() {
+        $this->view('blog');
     }
+    public function feature() {
+        $this->view('feature');
+    }
+    public function New_Arrival() {
+        $this->view('New_arrival');
+    }
+    public function contact() {
+        $this->view('contact');
+    }
+
 }
 
 
