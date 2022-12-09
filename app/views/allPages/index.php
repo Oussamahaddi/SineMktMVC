@@ -1,5 +1,6 @@
 <?php
-	include_once 'inc/header.php';
+	include_once APPROOT . '/views/inc/header.php';
+echo URLROOT;
 ?>
 		
 	
@@ -41,7 +42,7 @@
 				        <div class="container">            
 				            <!-- Start Atribute Navigation -->
 				            <div class="attr-nav">
-				                <ul>
+				                <ul style="display: flex; align-items: center;">
 				                	<li class="search">
 				                		<a href="#"><span class="lnr lnr-magnifier"></span></a>
 				                	</li><!--/.search-->
@@ -90,7 +91,7 @@
 				                            </li>
 				                        </ul>
 				                    </li><!--/.dropdown-->
-									<li><i class="fa-thin fa-user"></i></li>
+									<a href="<?= URLROOT; ?>/Authentification/login" ><li title="Login" style="padding: 20px 10px; font-size: 18px; margin-left: 20px; cursor: pointer;"><i class="fa-regular fa-user"></i></li></a>
 				                </ul>
 				            </div><!--/.attr-nav-->
 				            <!-- End Atribute Navigation -->
@@ -349,5 +350,5 @@
 
 
 <?php
-	include_once 'inc/footer.php';
+	include_once APPROOT . '/views/inc/footer.php';
 ?>

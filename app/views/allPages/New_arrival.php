@@ -1,5 +1,5 @@
 <?php
-	include_once 'inc/header.php';
+	include_once APPROOT . '/views/inc/header.php';
 ?>
 		
 	
@@ -41,7 +41,7 @@
 				        <div class="container">            
 				            <!-- Start Atribute Navigation -->
 				            <div class="attr-nav">
-				                <ul>
+				                <ul style="display: flex; align-items: center;">
 				                	<li class="search">
 				                		<a href="#"><span class="lnr lnr-magnifier"></span></a>
 				                	</li><!--/.search-->
@@ -90,6 +90,7 @@
 				                            </li>
 				                        </ul>
 				                    </li><!--/.dropdown-->
+									<a href="<?= URLROOT; ?>/Authentification/login"><li title="Login" style="padding: 20px 10px; font-size: 18px; margin-left: 20px; cursor: pointer;"><i class="fa-regular fa-user"></i></li></a>
 				                </ul>
 				            </div><!--/.attr-nav-->
 				            <!-- End Atribute Navigation -->
@@ -99,7 +100,7 @@
 				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 				                    <i class="fa fa-bars"></i>
 				                </button>
-				                <a class="navbar-brand" href="<?php echo URLROOT; ?>/index"><img src="<?php echo URLROOT; ?>/assets/logo/black logo.png" alt="" width="30px" class="logo"></a>
+				                <a class="navbar-brand" href="<?php echo URLROOT; ?>/pages/index"><img src="<?php echo URLROOT; ?>/assets/logo/black logo.png" alt="" width="30px" class="logo"></a>
 
 				            </div><!--/.navbar-header-->
 				            <!-- End Header Navigation -->
@@ -360,5 +361,5 @@
 
 
 <?php
-	include_once 'inc/footer.php';
+	include_once APPROOT . '/views/inc/footer.php';
 ?>

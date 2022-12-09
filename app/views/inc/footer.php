@@ -42,5 +42,5 @@
         <script src="<?php echo URLROOT; ?>/assets/js/custom.js"></script>
         
     </body>
-	<script src="https://kit.fontawesome.com/28113ccba1.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/e3e5f279fe.js" crossorigin="anonymous"></script>
 </html>
