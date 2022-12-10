@@ -33,7 +33,7 @@
 
                 // check if there is no erreur
                 if (empty($data['Email_err']) && empty($data['Password_err'])) {
-                    $this->view('index');
+                    $this->view('Dashboard/Dashboard');
                 } else {
                     // load view page width error
                     $this->view('log/login', $data);
