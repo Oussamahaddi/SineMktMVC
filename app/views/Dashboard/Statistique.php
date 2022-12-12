@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Abyssinica+SIL&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Itim&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/assets/css/dashboard.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -19,13 +19,14 @@
         <section class="dashboard_bar">
             <div class="dash_container">
                 <div class="logo">
-                    <a href="./index.php"><img src="./frontend/Sass/images/logo.png" alt=""></a>
+                    <a href="<?php echo URLROOT; ?>/index"><img src="<?php echo URLROOT; ?>/assets/logo/black logo.png" alt="" style="width: 50px;"></a>
                 </div>
                 <div class="manage">
                     <ul>
-                        <li><a href="./dashboard_statistique.php"><i class="fa-solid fa-chart-line"></i><span>Statistique</span></a></li>
-                        <li><a href="./dashboard_membre.php"><i class="fa-solid fa-users"></i><span>Members</span></a></li>
-                        <li style="background: #212429;"><a href="./dashboard_clubs.php"><i class="fa-solid fa-house-user"></i><span>Clubs</span></a></li>
+                        <li style="background: #f8f9fd;"><a href="<?php echo URLROOT; ?>/Dashboard/dashboard_stat" style='padding: 2rem 1rem 2rem 1.5rem;'><i class="fa-solid fa-chart-line"></i><span>Statistique</span></a></li>
+                        <li><a href="<?php echo URLROOT; ?>/Dashboard/new_arrival"><i class="fa-solid fa-cart-shopping"></i><span>New arrival</span></a></li>
+                        <li><a href="<?php echo URLROOT; ?>/Dashboard/features"><i class="fa-solid fa-star"></i><span>Feautres</span></a></li>
+                        <li><a href="<?php echo URLROOT; ?>/Dashboard/blog"><i class="fa-solid fa-house-user"></i><span>Blog</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -36,48 +37,23 @@
             <div class="dash_container">
                 <div class="elements">
                     <div class="title">
-                        <h4><span>C</span>lubs</h4>
+                        <h4><span>S</span>tatistique</h4>
                     </div>
                     <div class="admin_icon">
-                        <img src="./frontend/Sass/images/art 1.png" alt="" width="50px" class="admin">
+                        <img src="<?php echo URLROOT; ?>/img/admin.jpg" alt="" width="50px" class="admin">
                         <a href="./logout.php"><div class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></div></a>
                     </div>
                 </div>
             </div>
 
             <div class="tableaux_membre">
-                <div class="add" id="btn_add"><img src="./frontend/Sass/images/🦆 icon _plus_.png" alt=""></div>
-                <div class="table_club">
-                    <!-- table membres -->
-                    <?php 
+                <h2 style="text-align: center;">
+                    Welcome back 
+                    <!-- session admin -->
+                </h2>
 
-                        if($checkResult > 0){
-                            echo '<div class="club">';
-                            while ($row = ($result)) {
+                
 
-                                    echo '
-                                    <div class="club_container">
-                                        <div class="club_img">
-                                            <img src="./upload/'.$row['Image'].'" alt="club img" style="width: 200px; height:100%">
-                                        </div>
-                                        <div class="club_info">
-                                            <h3>'.$row['Clubname'].'</h3>
-                                            <p>Membres: '.$checkResult.'/20</p>
-                                            <p>'.$row['Description'] .'</p>
-                                            <div class="club_btn">
-                                                <a href="./updateClubForum.php?updateid='.$row['Id'].'&updateName='.$row['Clubname'].'&updateDescription='.$row['Description'].'&updateImage='.$row['Image'].' "><button> Update <i class="fa-regular fa-pen-to-square"></i></button></a>
-                                                <a href="./backend/Module/deleteClub.php?deletedid='.$row['Id'].'" ><button>Delete<i class="fa-solid fa-trash"></i></button></a>
-                                            </div>
-                                        </div>
-                                    </div>';
-                                }
-                            echo '</div>';
-                        } else {
-                            echo "<div style='color: white'>No membre exist</div>";
-                        }
-                    ?>
-                </div>
-            </div>
         </section>
         <div class="pop_up pop" id="pop_up">
             <div class="form">
@@ -114,6 +90,6 @@
 
 
 </body>
-    <script src="https://kit.fontawesome.com/28113ccba1.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e3e5f279fe.js" crossorigin="anonymous"></script>
     <script src="./frontend/js/addClub.js" type="module"></script>
 </html>

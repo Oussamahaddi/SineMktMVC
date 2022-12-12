@@ -3,9 +3,8 @@
 <?php
 
     class Authentification extends Controller {
-        
         public function __contruct() {
-
+            $this->admModule = $this->model('Admin');
         }
 
         public function login() {
@@ -25,7 +24,15 @@
                 // validate email
                 if (empty($data['Email'])) {
                     $data['Email_err'] = 'Please enter email';
+                } else {
+                    // check if admin already existe
+                    // if ($this->admModule->checkAdmin($data['Email'])) {
+                    //     $this->view('Dashboard/Statistique');
+                    // } else {
+                    //     $data['Email_err'] = 'This email dosent existe';
+                    // }
                 }
+
                 // validate password
                 if (empty($data['Password'])) {
                     $data['Password_err'] = 'Please enter password';
@@ -33,7 +40,7 @@
 
                 // check if there is no erreur
                 if (empty($data['Email_err']) && empty($data['Password_err'])) {
-                    $this->view('Dashboard/Dashboard');
+                    $this->view('Dashboard/Statistique');
                 } else {
                     // load view page width error
                     $this->view('log/login', $data);
