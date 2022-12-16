@@ -35,15 +35,16 @@
                 <input type="email" name="Email" value="<?= $data['Email'] ?>" placeholder="Enter email" id="usernam">
                 
                 <!-- error message if email empty or not found -->
-                <div style='color:red; padding: .5rem; border-radius: 3px;'><?php echo $data['Email_err'] ?></div>
+                <span style='color:red; padding: .5rem; border-radius: 3px;'><?php echo $data['Email_err'] ?></span>
             </div>
             <div class="ps">
                 <label for="password">Password</label>
                 <input type="password" name="Password" placeholder="Password" id="password"> <br>
                 
                 <!-- error message if email empty or not found -->
-                <div style='color:red; padding: .5rem; border-radius: 3px;'><?php echo $data['Password_err'] ?></div>
+                <span style='color:red; padding: .5rem; border-radius: 3px;'><?php echo $data['Password_err'] ?></span>
             </div>
+            <span style='color:red; padding: .5rem; border-radius: 3px;'><?php echo $data['Email_Password_err'] ?></span>
             <div class="go">
                 <input class="ok" type="submit">
             </div>

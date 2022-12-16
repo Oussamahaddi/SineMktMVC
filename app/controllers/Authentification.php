@@ -3,11 +3,15 @@
 <?php
 
     class Authentification extends Controller {
+
+        private $admModule;
         public function __contruct() {
             $this->admModule = $this->model('Admin');
         }
 
         public function login() {
+            $this->admModule = $this->model('Admin');
+
             // check for post
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // process form
@@ -18,19 +22,13 @@
                     'Email' => trim($_POST['Email']),
                     'Password' => trim($_POST['Password']),
                     'Email_err' => '',
-                    'Password_err' => ''
+                    'Password_err' => '',
+                    'Email_Password_err' => ''
                 ];
 
                 // validate email
                 if (empty($data['Email'])) {
                     $data['Email_err'] = 'Please enter email';
-                } else {
-                    // check if admin already existe
-                    // if ($this->admModule->checkAdmin($data['Email'])) {
-                    //     $this->view('Dashboard/Statistique');
-                    // } else {
-                    //     $data['Email_err'] = 'This email dosent existe';
-                    // }
                 }
 
                 // validate password
@@ -40,11 +38,22 @@
 
                 // check if there is no erreur
                 if (empty($data['Email_err']) && empty($data['Password_err'])) {
-                    $this->view('Dashboard/Statistique');
+                    // check for validate email
+                    $loginCheck = $this->admModule->checkAdmin($data['Email'], $data['Password']);
+                    if ($loginCheck) {
+                        // if email correct
+                        redirect('Dashboard/Statistique');
+                    } else {
+                        // if not found
+                        $data['Email_Password_err'] = 'Email or Password incorrect !!!';
+                        $this->view('log/login', $data);
+                    }
                 } else {
                     // load view page width error
                     $this->view('log/login', $data);
                 }
+
+                
 
 
             } else {
@@ -53,7 +62,8 @@
                     'Email' => '',
                     'Password' => '',
                     'Email_err' => '',
-                    'Password_err' => ''
+                    'Password_err' => '',
+                    'Email_Password_err' => ''
                 ];
 
                 // load view
@@ -62,4 +72,8 @@
         }
     }
 
+    
+
+
 ?>
+

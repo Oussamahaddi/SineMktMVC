@@ -23,7 +23,7 @@
             
             // create PDO instance
             try {
-                $this->dbh = new PDO($dsn, $this->user, $this->pass);
+                $this->dbh = new PDO($dsn, $this->user, $this->pass,$option);
             } catch (PDOException $e) {
                 $this->error = $e->getMessage();
                 echo $this->error;
@@ -70,7 +70,7 @@
         // get single record as object
         public function single() {
             $this->execute();
-            return $this->stmt->fetch()(PDO::FETCH_OBJ);
+            return $this->stmt->fetch(PDO::FETCH_OBJ);
         }
 
         // get row count
