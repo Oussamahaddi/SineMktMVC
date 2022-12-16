@@ -11,12 +11,8 @@
 
         public function setProduct($title, $price, $img) {
 
-            $image_name = $_FILES['ProductImage']['name'];
             $image_tmp = $_FILES['ProductImage']['tmp_name'];
-            $image_extension = pathinfo($image_name, PATHINFO_EXTENSION);
-            $image_str_lower = strtolower($image_extension);
-            $new_image_name = uniqid("IMG-", true).'.'.$image_str_lower;
-            $image_upload_path = '../../upload/'.$new_image_name;
+            $image_upload_path = URLROOT .'/img/upload/' . $image_tmp;
             move_uploaded_file($image_tmp, $image_upload_path);
             
             $sql = "INSERT INTO `new_arrival`(`Image`, `Title`, `Price`)
@@ -28,4 +24,13 @@
 
             return $this->db->execute();
         } 
+
+        public function getProduct() {
+            
+            $this->db->query("SELECT * FROM new_arrival");
+
+            $result = $this->db->resultSet();
+
+            return $result;
+        }
     }

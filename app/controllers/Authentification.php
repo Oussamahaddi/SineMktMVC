@@ -41,8 +41,8 @@
                     // check for validate email
                     $loginCheck = $this->admModule->checkAdmin($data['Email'], $data['Password']);
                     if ($loginCheck) {
-                        // if email correct
-                        redirect('Dashboard/Statistique');
+                        // create session
+                        $this->createAdminSession($loginCheck);
                     } else {
                         // if not found
                         $data['Email_Password_err'] = 'Email or Password incorrect !!!';
@@ -53,8 +53,6 @@
                     $this->view('log/login', $data);
                 }
 
-                
-
 
             } else {
                 // init data
@@ -63,16 +61,28 @@
                     'Password' => '',
                     'Email_err' => '',
                     'Password_err' => '',
-                    'Email_Password_err' => ''
+                    'Email_Password_err' => '',
                 ];
 
                 // load view
                 $this->view('log/login', $data);
             }
         }
+
+        public function createAdminSession($admin) {
+            $_SESSION['Email'] = $admin->Email;
+            redirect('Dashboard/Statistique');
+        }
+
+        public function logOutAdmin() {
+            unset($_SESSION['Email']);
+            session_destroy();
+            redirect('allPages/index');
+        }
+
     }
 
-    
+
 
 
 ?>

@@ -1,7 +1,3 @@
-<?php
-    session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +37,7 @@
                     </div>
                     <div class="admin_icon">
                         <img src="<?php echo URLROOT; ?>/img/admin.jpg" alt="" width="50px" class="admin">
-                        <a href="./logout.php"><div class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></div></a>
+                        <a href="<?= URLROOT; ?>/Authentification/logOutAdmin"><div class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></div></a>
                     </div>
                 </div>
             </div>

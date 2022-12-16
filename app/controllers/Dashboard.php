@@ -6,6 +6,9 @@
 
         private $productModule;
         public function __construct() {
+            if (!isLoggedIn()) {
+                redirect('Authentification/login');
+            }
             $this->productModule = $this->model('Product');
         }
 
@@ -13,21 +16,14 @@
             $this->view('Dashboard/Statistique');
         }
         public function New_Arrival() {
-            $this->productModule = $this->model('Product');
+            // $this->productModule = $this->model('Product');
+            // get product
+            $product = $this->productModule->getProduct();
 
             $data = [
-                'Title' => '',
-                'Price' => '',
-                'Image' => ''
+                'Product' => $product
             ];
 
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $data = [
-                    'Title' => $_POST['ProductName'],
-                    'Price' => $_POST['ProductPrice'],
-                    'Image' => $_FILES['ProductImage']['tmp_name']
-                ];
-            }
             $this->view('Dashboard/New_Arrival', $data);
         }
         public function features() {

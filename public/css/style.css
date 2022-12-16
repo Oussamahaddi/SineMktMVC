@@ -63,7 +63,8 @@
   justify-content: center;
   align-items: center;
   height: 100px;
-  box-shadow: 0 2px 5px black;
+  box-shadow: 0 2px 5px #ccc;
+  position: relative;
 }
 .dashboard_header .dash_container .elements {
   width: 95%;
@@ -175,46 +176,54 @@
   font-family: "Itim", cursive;
   padding: 1rem;
 }
-.dashboard_header .tableaux_membre .table_club .club {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  height: 100%;
-  padding: 0.5rem;
-}
-.dashboard_header .tableaux_membre .table_club .club .club_container {
+.dashboard_header .tableaux_membre .table_club {
   display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  row-gap: 1.5rem;
+}
+.dashboard_header .tableaux_membre .table_club .club_container {
+  padding: 1rem 0.4rem 0.4rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 1rem;
-  background-color: #f8f9fd;
-  box-shadow: 0 0 4px black;
-  width: 90%;
+  background-color: #f8f9fc;
+  box-shadow: 0 0 2px #ccc;
+  width: 22.5%;
 }
-.dashboard_header .tableaux_membre .table_club .club .club_container .club_img {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-.dashboard_header .tableaux_membre .table_club .club .club_container .club_info {
-  display: grid;
-  align-items: space-around;
+.dashboard_header .tableaux_membre .table_club .club_container .club_img {
   width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.dashboard_header .tableaux_membre .table_club .club_container .club_img img {
+  width: 60%;
+}
+.dashboard_header .tableaux_membre .table_club .club_container .club_info {
+  display: grid;
+  justify-items: center;
   gap: 1rem;
   margin: 0.5rem 0;
+  text-align: center;
 }
-.dashboard_header .tableaux_membre .table_club .club .club_container .club_info p {
+.dashboard_header .tableaux_membre .table_club .club_container .club_info p {
   width: 80%;
-  color: rgb(192, 192, 192);
+  color: rgb(131, 131, 131);
   font-family: "Itim", cursive;
   font-size: 14px;
 }
-.dashboard_header .tableaux_membre .table_club .club .club_container .club_info .club_btn {
+.dashboard_header .tableaux_membre .table_club .club_container .club_info .club_btn {
   display: flex;
   gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-.dashboard_header .tableaux_membre .table_club .club .club_container .club_info .club_btn a {
+.dashboard_header .tableaux_membre .table_club .club_container .club_info .club_btn a {
   text-decoration: none;
 }
-.dashboard_header .tableaux_membre .table_club .club .club_container .club_info .club_btn a button {
+.dashboard_header .tableaux_membre .table_club .club_container .club_info .club_btn a button {
   padding: 0.5rem;
   cursor: pointer;
   border: none;
@@ -222,15 +231,15 @@
   display: flex;
   gap: 0.3rem;
 }
-.dashboard_header .tableaux_membre .table_club .club .club_container .club_info .club_btn a button i {
+.dashboard_header .tableaux_membre .table_club .club_container .club_info .club_btn a button i {
   color: red;
 }
-.dashboard_header .tableaux_membre .table_club .club .club_container .club_info .club_btn a button:hover {
+.dashboard_header .tableaux_membre .table_club .club_container .club_info .club_btn a button:hover {
   background: #d08926;
   transition: all 0.3s ease;
   color: white;
 }
-.dashboard_header .tableaux_membre .table_club .club .club_container .club_info .club_btn a:first-child i {
+.dashboard_header .tableaux_membre .table_club .club_container .club_info .club_btn a:first-child i {
   color: #039803 !important;
 }
 .dashboard_header .tableaux_membre h2 {

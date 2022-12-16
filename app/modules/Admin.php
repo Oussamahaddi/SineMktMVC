@@ -9,7 +9,7 @@
         }
 
         public function checkAdmin($email, $password) {
-            $this->db->query("SELECT * FROM admins WHERE Email = :email AND Password= :password");
+            $this->db->query("SELECT * FROM admins WHERE Email = :email AND Password = :password");
             $this->db->bind(":email", $email);
             $this->db->bind(":password", $password);
 
@@ -17,7 +17,7 @@
 
             // check row
             if ($this->db->rowCount() > 0) {
-                return true;
+                return $row;
             } else {
                 return false;
             }

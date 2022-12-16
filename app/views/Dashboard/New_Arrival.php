@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +38,7 @@
                     </div>
                     <div class="admin_icon">
                         <img src="<?php echo URLROOT; ?>/img/admin.jpg" alt="" width="50px" class="admin">
-                        <a href="./logout.php"><div class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></div></a>
+                        <a href="<?= URLROOT; ?>/Authentification/logOutAdmin"><div class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></div></a>
                     </div>
                 </div>
             </div>
@@ -49,10 +46,22 @@
             <div class="tableaux_membre">
                 <div class="add" id="btn_add"><i class="fa-solid fa-plus" ></i></div>
                 <div class="table_club">
-                    <!-- table membres -->
-                    <?php 
-                        while ($row)
-                    ?>
+                    <!-- table of product -->
+                    <?php foreach ($data['Product'] as $product) : ?>
+                        <div class="club_container">
+                            <div class="club_img">
+                                <img src="<?= URLROOT .'/img/upload/' . $product->Image ?>" alt="club img" >
+                            </div>
+                            <div class="club_info">
+                                <h3><?php echo $product->Title; ?></h3>
+                                <p>$<?php echo $product->Price; ?></p>
+                                <div class="club_btn">
+                                    <a href="#"><button> Update <i class="fa-regular fa-pen-to-square"></i></button></a>
+                                    <a href="#" ><button> Delete <i class="fa-solid fa-trash"></i></button></a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </section>
@@ -68,8 +77,8 @@
                     
                     <!-- Add price product -->
                     <div class="description">
-                        <label for="description">Product Price</label>
-                        <input type="text" name="ProductPrice" id="name" placeholder="Price" required>
+                        <label for="name">Product Price</label>
+                        <input type="number" name="ProductPrice" id="name" placeholder="Price" required>
                     </div>
 
                     <!-- Add club image -->

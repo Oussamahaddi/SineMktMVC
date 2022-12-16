@@ -1,7 +1,6 @@
 <?php
-    session_start();
+    // print_r($_SESSION['Email']);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Abyssinica+SIL&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Itim&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
+    <link rel="stylesheet" href="<?= URLROOT; ?>/css/style.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -19,14 +18,14 @@
         <section class="dashboard_bar">
             <div class="dash_container">
                 <div class="logo">
-                    <a href="<?php echo URLROOT; ?>/index"><img src="<?php echo URLROOT; ?>/assets/logo/black logo.png" alt="" style="width: 50px;"></a>
+                    <a href="<?php echo URLROOT; ?>/index"><img src="<?= URLROOT; ?>/assets/logo/black logo.png" alt="" style="width: 50px;"></a>
                 </div>
                 <div class="manage">
                     <ul>
-                        <li style="background: #f8f9fd;"><a href="<?php echo URLROOT; ?>/Dashboard/dashboard_stat" style='padding: 2rem 1rem 2rem 1.5rem;'><i class="fa-solid fa-chart-line"></i><span>Statistique</span></a></li>
-                        <li><a href="<?php echo URLROOT; ?>/Dashboard/new_arrival"><i class="fa-solid fa-cart-shopping"></i><span>New arrival</span></a></li>
-                        <li><a href="<?php echo URLROOT; ?>/Dashboard/features"><i class="fa-solid fa-star"></i><span>Feautres</span></a></li>
-                        <li><a href="<?php echo URLROOT; ?>/Dashboard/blog"><i class="fa-solid fa-house-user"></i><span>Blog</span></a></li>
+                        <li style="background: #f8f9fd;"><a href="<?= URLROOT; ?>/Dashboard/Statistique" style='padding: 2rem 1rem 2rem 1.5rem;'><i class="fa-solid fa-chart-line"></i><span>Statistique</span></a></li>
+                        <li><a href="<?= URLROOT; ?>/Dashboard/new_arrival"><i class="fa-solid fa-cart-shopping"></i><span>New arrival</span></a></li>
+                        <li><a href="<?= URLROOT; ?>/Dashboard/features"><i class="fa-solid fa-star"></i><span>Feautres</span></a></li>
+                        <li><a href="<?= URLROOT; ?>/Dashboard/blog"><i class="fa-solid fa-house-user"></i><span>Blog</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -40,52 +39,18 @@
                         <h4><span>S</span>tatistique</h4>
                     </div>
                     <div class="admin_icon">
-                        <img src="<?php echo URLROOT; ?>/img/admin.jpg" alt="" width="50px" class="admin">
-                        <a href="./logout.php"><div class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></div></a>
+                        <img src="<?= URLROOT; ?>/img/admin.jpg" alt="" width="50px" class="admin">
+                        <a href="<?= URLROOT; ?>/Authentification/logOutAdmin"><div class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></div></a>
                     </div>
                 </div>
             </div>
 
             <div class="tableaux_membre">
                 <h2 style="text-align: center;">
-                    Welcome back 
+                    Welcome back <?= $_SESSION['Email']; ?>
                     <!-- session admin -->
                 </h2>
-
-                
-
         </section>
-        <div class="pop_up pop" id="pop_up">
-            <div class="form">
-                <form action="./backend/Module/addClubs.php" method="POST" enctype="multipart/form-data">
-
-                    <!-- Add club name -->
-                    <div class="Club name">
-                        <label for="name">Club name</label>
-                        <input type="text" name="Clubname" id="name" placeholder="Full name" required>
-                    </div>
-                    
-                    <!-- Add club description -->
-                    <div class="description">
-                        <label for="description">Club description</label>
-                        <textarea type="text" name="Clubdescription" id="name" placeholder="Description" required></textarea>
-                    </div>
-
-                    <!-- Add club image -->
-                    <div class="image">
-                        <label for="image">Club image</label>
-                        <input type="file" name="Image" id="name" required>
-                    </div>
-
-                    <div class="btns">
-                        <input type="submit" id="submit" class="submit" value="Ajouter">
-                        <input type="reset" value="Cancel" class="submit" id="cancel" style="background-color:red; cursor: pointer;">
-                    </div>
-
-
-                </form>
-            </div>
-        </div>
     </div>
 
 

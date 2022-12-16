@@ -8,7 +8,7 @@
 
 			<div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
 				<!--/.carousel-indicator -->
-				 <ol class="carousel-indicators">
+				<ol class="carousel-indicators">
 					<li data-target="#header-carousel" data-slide-to="0" class="active"><span class="small-circle"></span></li>
 					<li data-target="#header-carousel" data-slide-to="1"><span class="small-circle"></span></li>
 					<li data-target="#header-carousel" data-slide-to="2"><span class="small-circle"></span></li>
@@ -90,8 +90,15 @@
 				                            </li>
 				                        </ul>
 				                    </li><!--/.dropdown-->
-									<a href="<?= URLROOT; ?>/Authentification/login" ><li title="Login" style="padding: 20px 10px; font-size: 18px; margin-left: 20px; cursor: pointer;"><i class="fa-regular fa-user"></i></li></a>
-				                </ul>
+									<?php if (isset($_SESSION['Email'])) { ?> 
+										<div class="admin_icon">
+											<img src="<?php echo URLROOT; ?>/img/admin.jpg" alt="" width="30px" class="admin" style="border-radius: 50%; margin: 0 1rem;">
+											<a href="<?php echo URLROOT; ?>/Authentification/logOutAdmin" title="logout"><div class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></div></a>
+										</div>
+									<?php } else { ?>
+										<a href="<?= URLROOT; ?>/Authentification/login" ><li title="Login" style="padding: 20px 10px; font-size: 18px; margin-left: 20px; cursor: pointer;"><i class="fa-regular fa-user"></i></li></a>
+									<?php } ?>
+								</ul>
 				            </div><!--/.attr-nav-->
 				            <!-- End Atribute Navigation -->
 
@@ -108,11 +115,20 @@
 				            <!-- Collect the nav links, forms, and other content for toggling -->
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li><a href="<?php echo URLROOT; ?>/pages/index" style="color: #e99c2f;">home</a></li>
-				                    <li><a href="<?php echo URLROOT; ?>/pages/New_arrival">new arrival</a></li>
-				                    <li><a href="<?php echo URLROOT; ?>/pages/feature">features</a></li>
-				                    <li><a href="<?php echo URLROOT; ?>/pages/blog">blog</a></li>
-				                    <li><a href="<?php echo URLROOT; ?>/pages/contact">contact</a></li>
+									<?php if (isset($_SESSION['Email'])) { ?>
+										<li><a href="<?php echo URLROOT; ?>/allPages/index" style="color: #e99c2f;">home</a></li>
+										<li><a href="<?php echo URLROOT; ?>/allPages/New_arrival">new arrival</a></li>
+										<li><a href="<?php echo URLROOT; ?>/allPages/feature">features</a></li>
+										<li><a href="<?php echo URLROOT; ?>/allPages/blog">blog</a></li>
+										<li><a href="<?php echo URLROOT; ?>/allPages/contact">contact</a></li>
+										<li><a href="<?php echo URLROOT; ?>/Dashboard/Statistique">Dashboard</a></li>
+									<?php } else { ?>
+										<li><a href="<?php echo URLROOT; ?>/allPages/index" style="color: #e99c2f;">home</a></li>
+										<li><a href="<?php echo URLROOT; ?>/allPages/New_arrival">new arrival</a></li>
+										<li><a href="<?php echo URLROOT; ?>/allPages/feature">features</a></li>
+										<li><a href="<?php echo URLROOT; ?>/allPages/blog">blog</a></li>
+										<li><a href="<?php echo URLROOT; ?>/allPages/contact">contact</a></li>
+									<?php } ?>
 				                </ul><!--/.nav -->
 				            </div><!-- /.navbar-collapse -->
 				        </div><!--/.container-->
@@ -131,7 +147,7 @@
 		<section id="home" class="welcome-hero">
 			<div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
 				<!--/.carousel-indicator -->
-				 <ol class="carousel-indicators">
+				<ol class="carousel-indicators">
 					<li data-target="#header-carousel" data-slide-to="0" class="active"><span class="small-circle"></span></li>
 					<li data-target="#header-carousel" data-slide-to="1"><span class="small-circle"></span></li>
 					<li data-target="#header-carousel" data-slide-to="2"><span class="small-circle"></span></li>
