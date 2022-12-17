@@ -139,8 +139,8 @@
         overflow-y: scroll;
 
         .add {
+            text-decoration: none;
             width: 40px;
-            color: white;
             aspect-ratio: 1/1;
             border-radius: 50%;
             background-color: $lightBlue;
@@ -155,6 +155,10 @@
                 box-shadow: 0 2px 5px black;
                 transform: perspective(100px) translateZ(-4px);
                 transition: all .2s ease-in-out;
+            }
+
+            a {
+                color: white;
             }
 
             img {
@@ -341,21 +345,6 @@
                 }
                 &:nth-child(2) {
                     position: relative;
-                    box-shadow: 0 2px 5px $lightBlue;
-
-                    &:after {
-                        content: "";
-                        position: absolute;
-                        background: $lightBlue;
-                        width: 7px;
-                        height: 100%;
-                        top: 0;
-                        left: 0;
-                        border-radius: 5px 0 0 5px;
-                    }
-                }
-                &:nth-child(3) {
-                    position: relative;
                     box-shadow: 0 2px 5px #40ea40;
 
                     &:after {
@@ -380,7 +369,6 @@
 }
 
 .pop_up {
-    display: none;
     background-color: rgba(0, 0, 0, 30%);
     position: absolute;
     width: 100%;
@@ -391,11 +379,14 @@
     .form {
         position: absolute;
         left: 50%;
-        top: 0;
-        transform: translate(-50%, 5%);
+        top: 50%;
+        transform: translate(-50%, -50%);
         background-color: white;
         width: 30rem;
         padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
         
         &::before {
             content: "";
@@ -407,7 +398,11 @@
             right: 0;
             transform: translateX(20px);
         }
-    
+        
+        a {
+            text-decoration: none;
+            color: $darkGray;
+        }
         form {
             display: flex;
             flex-direction: column;

@@ -50,6 +50,22 @@
                     Welcome back <?= $_SESSION['Email']; ?>
                     <!-- session admin -->
                 </h2>
+
+                <div class="state">
+                    <div class="state_admin">
+                        <?php 
+                            echo '<span>Total Admin : '.$data['admin'].' </span><i class="fa-solid fa-house-user"></i>';
+                        ?>
+                    </div>
+
+                    <div class="state_clubs">
+                        <?php 
+                            echo '<span>Total Clubs : '.$data['product'].' </span><i class="fa-solid fa-chart-line"></i>';
+                        ?>
+                    </div>
+                </div>
+
+            </div>
         </section>
     </div>
 

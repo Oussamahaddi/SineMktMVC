@@ -111,8 +111,8 @@
   overflow-y: scroll;
 }
 .dashboard_header .tableaux_membre .add {
+  text-decoration: none;
   width: 40px;
-  color: white;
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: #e89c30;
@@ -127,6 +127,9 @@
   box-shadow: 0 2px 5px black;
   transform: perspective(100px) translateZ(-4px);
   transition: all 0.2s ease-in-out;
+}
+.dashboard_header .tableaux_membre .add a {
+  color: white;
 }
 .dashboard_header .tableaux_membre .add img {
   width: 70%;
@@ -274,23 +277,9 @@
 }
 .dashboard_header .tableaux_membre .state div:nth-child(2) {
   position: relative;
-  box-shadow: 0 2px 5px #e89c30;
-}
-.dashboard_header .tableaux_membre .state div:nth-child(2):after {
-  content: "";
-  position: absolute;
-  background: #e89c30;
-  width: 7px;
-  height: 100%;
-  top: 0;
-  left: 0;
-  border-radius: 5px 0 0 5px;
-}
-.dashboard_header .tableaux_membre .state div:nth-child(3) {
-  position: relative;
   box-shadow: 0 2px 5px #40ea40;
 }
-.dashboard_header .tableaux_membre .state div:nth-child(3):after {
+.dashboard_header .tableaux_membre .state div:nth-child(2):after {
   content: "";
   position: absolute;
   background: #40ea40;
@@ -305,7 +294,6 @@
 }
 
 .pop_up {
-  display: none;
   background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   width: 100%;
@@ -316,11 +304,14 @@
 .pop_up .form {
   position: absolute;
   left: 50%;
-  top: 0;
-  transform: translate(-50%, 5%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   background-color: white;
   width: 30rem;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 .pop_up .form::before {
   content: "";
@@ -331,6 +322,10 @@
   top: 0;
   right: 0;
   transform: translateX(20px);
+}
+.pop_up .form a {
+  text-decoration: none;
+  color: #5C5C5C;
 }
 .pop_up .form form {
   display: flex;

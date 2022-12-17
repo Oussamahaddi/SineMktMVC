@@ -44,7 +44,7 @@
             </div>
 
             <div class="tableaux_membre">
-                <div class="add" id="btn_add"><i class="fa-solid fa-plus" ></i></div>
+                <div class="add" id="btn_add"><a href="<?= URLROOT ?>/Dashboard/add"><i class="fa-solid fa-plus" ></i></a></div>
                 <div class="table_club">
                     <!-- table of product -->
                     <?php foreach ($data['Product'] as $product) : ?>
@@ -65,36 +65,6 @@
                 </div>
             </div>
         </section>
-        <div class="pop_up pop" id="pop_up">
-            <div class="form">
-                <form action="<?php echo URLROOT; ?>/Dashboard/New_Arrival" method="POST" enctype="multipart/form-data">
-
-                    <!-- Add product name -->
-                    <div class="Club name">
-                        <label for="name">Product name</label>
-                        <input type="text" name="ProductName" id="name" placeholder="Product Name" required>
-                    </div>
-                    
-                    <!-- Add price product -->
-                    <div class="description">
-                        <label for="name">Product Price</label>
-                        <input type="number" name="ProductPrice" id="name" placeholder="Price" required>
-                    </div>
-
-                    <!-- Add club image -->
-                    <div class="image">
-                        <label for="image">Product image</label>
-                        <input type="file" name="ProductImage" id="name" required>
-                    </div>
-
-                    <div class="btns">
-                        <input type="submit" id="submit" class="submit" value="Ajouter">
-                        <input type="reset" value="Cancel" class="submit" id="cancel" style="background-color:red; cursor: pointer;">
-                    </div>
-
-                </form>
-            </div>
-        </div>
     </div>
 
 

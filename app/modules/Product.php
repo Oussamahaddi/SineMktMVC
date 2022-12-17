@@ -9,11 +9,7 @@
             $this->db = new Database;
         }
 
-        public function setProduct($title, $price, $img) {
-
-            $image_tmp = $_FILES['ProductImage']['tmp_name'];
-            $image_upload_path = URLROOT .'/img/upload/' . $image_tmp;
-            move_uploaded_file($image_tmp, $image_upload_path);
+        public function setProduct($img, $title, $price) {
             
             $sql = "INSERT INTO `new_arrival`(`Image`, `Title`, `Price`)
                                 VALUES (:img, :title, :price)";
@@ -33,4 +29,21 @@
 
             return $result;
         }
+
+        public function getAdmins() {
+            $this->db->query('SELECT * FROM admins');
+
+            $row = $this->db->resultSet();
+
+            return $this->db->rowCount();
+        }
+
+        public function getProductRow() {
+            $this->db->query('SELECT * FROM new_arrival');
+
+            $row = $this->db->resultSet();
+
+            return $this->db->rowCount();
+        }
+
     }
