@@ -23,6 +23,7 @@
                 'admin' => $admin,
                 'product' => $product
             ];
+            // load view with statistique of admin and product from data
             $this->view('Dash/Statistique', $data);
         }
         
@@ -49,19 +50,60 @@
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-                $img = $_FILES['ProductImage']['tmp_name'];
-                // move_uploaded_file($img, URLROOT . '/img/upload/');
-                $productName = $_POST['ProductName'];
-                $productPrice = $_POST['ProductPrice'];
+                $image_name = $_FILES['ProductImage']['name'];
+                $image_tmp = $_FILES['ProductImage']['tmp_name'];
+                
+                move_uploaded_file($image_tmp, 'img/upload/' . $image_name);
 
-                $setProduct = $this->productModule->setProduct($img, $productName, $productPrice); 
-
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                // init data
                 $data = [
-                    'setProduct' => $setProduct,
+                    'Image' => trim($image_name),
+                    'Title' => trim($_POST['ProductName']),
+                    'Price' => trim($_POST['ProductPrice']),
+                    'Image_err' => '',
+                    'Title_err' => '',
+                    'Price_err' => ''
                 ];
+
+                // validate data
+                if (empty($data['Image'])) {
+                    $data['Image_err'] = 'Please enter Product Image';
+                }
+                if (empty($data['Title'])) {
+                    $data['Title_err'] = 'Please enter Product Title';
+                }
+                if (empty($data['Price'])) {
+                    $data['Price_err'] = 'Please enter Product Price';
+                }
+
+                // check if there is no erreur
+                if (empty($data['Image_err']) && empty($data['Title_err']) && empty($data['Price_err'])) {
+                    // check for validate email
+                    if ($this->productModule->setProduct($data)) {
+                        redirect('Dashboard/New_arrival');
+                    } else {
+                        die("Something wrong abro");
+                    }
+                } else {
+                    // load view page width error
+                    $this->view('Dash/add', $data);
+                }
+            } else {
+                // init data
+                $data = [
+                    'Image' => '',
+                    'Title' => '',
+                    'Price' => '',
+                    'Image_err' => '',
+                    'Title_err' => '',
+                    'Price_err' => ''
+                ];
+
+                // load view
+                $this->view('Dash/add', $data);
             }
 
-            $this->view('Dash/add', $data);
         }
 
     }

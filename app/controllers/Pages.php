@@ -4,6 +4,7 @@
 
 class Pages extends Controller {
     public function __construct() {
+        $this->productModule = $this->model('Product');
 
     }
     public function index() {
@@ -16,7 +17,14 @@ class Pages extends Controller {
         $this->view('allPages/feature');
     }
     public function New_Arrival() {
-        $this->view('allPages/New_arrival');
+        $getProduct = $this->productModule->getProduct();
+            
+
+        $data = [
+            'Product' => $getProduct,
+        ];
+
+        $this->view('allPages/New_arrival',$data);
     }
     public function contact() {
         $this->view('allPages/contact');

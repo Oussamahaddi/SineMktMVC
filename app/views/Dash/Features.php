@@ -43,7 +43,7 @@
             </div>
 
             <div class="tableaux_membre">
-                <div class="add" id="btn_add"><i class="fa-solid fa-plus" ></i></div>
+            <div class="add" id="btn_add"><a href="<?= URLROOT ?>/Dashboard/add"><i class="fa-solid fa-plus" ></i></a></div>
                 <div class="table_club">
                     <!-- table membres -->
                     <?php 
@@ -76,37 +76,7 @@
                 </div>
             </div>
         </section>
-        <div class="pop_up pop" id="pop_up">
-            <div class="form">
-                <form action="./backend/Module/addClubs.php" method="POST" enctype="multipart/form-data">
 
-                    <!-- Add club name -->
-                    <div class="Club name">
-                        <label for="name">Club name</label>
-                        <input type="text" name="Clubname" id="name" placeholder="Full name" required>
-                    </div>
-                    
-                    <!-- Add club description -->
-                    <div class="description">
-                        <label for="description">Club description</label>
-                        <textarea type="text" name="Clubdescription" id="name" placeholder="Description" required></textarea>
-                    </div>
-
-                    <!-- Add club image -->
-                    <div class="image">
-                        <label for="image">Club image</label>
-                        <input type="file" name="Image" id="name" required>
-                    </div>
-
-                    <div class="btns">
-                        <input type="submit" id="submit" class="submit" value="Ajouter">
-                        <input type="reset" value="Cancel" class="submit" id="cancel" style="background-color:red; cursor: pointer;">
-                    </div>
-
-
-                </form>
-            </div>
-        </div>
     </div>
 
 

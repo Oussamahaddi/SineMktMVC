@@ -9,16 +9,20 @@
             $this->db = new Database;
         }
 
-        public function setProduct($img, $title, $price) {
+        public function setProduct($data) {
             
             $sql = "INSERT INTO `new_arrival`(`Image`, `Title`, `Price`)
                                 VALUES (:img, :title, :price)";
             $this->db->query($sql);
-            $this->db->bind(':img', $img);
-            $this->db->bind(':title', $title);
-            $this->db->bind(':price', $price);
+            $this->db->bind(':img', $data['Image']);
+            $this->db->bind(':title', $data['Title']);
+            $this->db->bind(':price', $data['Price']);
 
-            return $this->db->execute();
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
         } 
 
         public function getProduct() {

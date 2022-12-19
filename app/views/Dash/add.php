@@ -21,17 +21,17 @@
                 <!-- Add product name -->
                 <div class="Club name">
                     <label for="name">Product name</label>
-                    <input type="text" name="ProductName" id="name" placeholder="Product Name">
+                    <input type="text" name="ProductName" id="name" placeholder="Product Name" value="<?php echo $data['Title'] ?>">
                     <!-- error message if product input empty or not found -->
-                    <span style='color:red; padding: .5rem; border-radius: 3px;'><?php echo $data['Email_err'] ?></span>
+                    <span style='color:red; padding: .5rem; border-radius: 3px;'><?php echo $data['Title_err'] ?></span>
                 </div>
                 
                 <!-- Add price product -->
                 <div class="description">
                     <label for="name">Product Price</label>
-                    <input type="text" name="ProductPrice" id="name" placeholder="Price">
+                    <input type="text" name="ProductPrice" id="name" placeholder="Price" value="<?php echo $data['Price'] ?>">
                     <!-- error message if product input or not found -->
-                    <span style='color:red; padding: .5rem; border-radius: 3px;'><?php echo $data['Email_err'] ?></span>
+                    <span style='color:red; padding: .5rem; border-radius: 3px;'><?php echo $data['Price_err'] ?></span>
                 </div>
 
                 <!-- Add club image -->
@@ -39,7 +39,7 @@
                     <label for="image">Product image</label>
                     <input type="file" name="ProductImage" id="name">
                     <!-- error message if product input or not found -->
-                    <span style='color:red; padding: .5rem; border-radius: 3px;'><?php echo $data['Email_err'] ?></span>
+                    <span style='color:red; padding: .5rem; border-radius: 3px;'><?php echo $data['Image_err'] ?></span>
                 </div>
 
                 <div class="btns">
