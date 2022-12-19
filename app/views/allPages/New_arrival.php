@@ -159,7 +159,7 @@
 							<div class="col-md-3 col-sm-4">
 								<div class="single-new-arrival">
 									<div class="single-new-arrival-bg">
-										<img src="<?php echo URLROOT . '/assets/images/collection/' . $product->Image?>" alt="new-arrivals images">
+										<img src="<?php echo URLROOT . '/img/upload/' . $product->Image?>" alt="new-arrivals images">
 										<div class="single-new-arrival-bg-overlay"></div>
 										<div class="sale bg-1">
 											<p>sale</p>
