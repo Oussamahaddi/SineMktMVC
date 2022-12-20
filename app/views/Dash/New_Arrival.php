@@ -56,8 +56,8 @@
                                 <h3><?php echo $product->Title; ?></h3>
                                 <p>$<?php echo $product->Price; ?></p>
                                 <div class="club_btn">
-                                    <a href="#"><button> Update <i class="fa-regular fa-pen-to-square"></i></button></a>
-                                    <a href="#" ><button> Delete <i class="fa-solid fa-trash"></i></button></a>
+                                    <a href="<?= URLROOT . '/Dashboard/edit/' . $product->Id; ?>"><button> Update <i class="fa-regular fa-pen-to-square"></i></button></a>
+                                    <a href="<?= URLROOT . '/Dashboard/delete/' . $product->Id; ?>" ><button> Delete <i class="fa-solid fa-trash"></i></button></a>
                                 </div>
                             </div>
                         </div>

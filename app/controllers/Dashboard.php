@@ -50,9 +50,9 @@
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+                // get file image and move it into new folder
                 $image_name = $_FILES['ProductImage']['name'];
                 $image_tmp = $_FILES['ProductImage']['tmp_name'];
-                
                 move_uploaded_file($image_tmp, 'img/upload/' . $image_name);
 
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -102,6 +102,96 @@
 
                 // load view
                 $this->view('Dash/add', $data);
+            }
+
+        }
+
+        public function edit($id) {
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+                // get file image and move it into new folder
+                $image_name = $_FILES['ProductImage']['name'];
+                $image_tmp = $_FILES['ProductImage']['tmp_name'];
+                move_uploaded_file($image_tmp, 'img/upload/' . $image_name);
+
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $productId = $this->productModule->getProductById($id);
+
+                
+
+                if (!empty($data['Image'])) {
+                    // update data
+                    $data = [
+                        'Id' => $productId->Id,
+                        'Image' => trim($image_name),
+                        'Title' => trim($_POST['ProductName']),
+                        'Price' => trim($_POST['ProductPrice']),
+                        'Image_err' => '',
+                        'Title_err' => '',
+                        'Price_err' => ''
+                    ];
+                } else {
+                    // update data
+                    $data = [
+                        'Id' => $productId->Id,
+                        'Image' => $productId->Image,
+                        'Title' => trim($_POST['ProductName']),
+                        'Price' => trim($_POST['ProductPrice']),
+                        'Image_err' => '',
+                        'Title_err' => '',
+                        'Price_err' => ''
+                    ];
+                }
+
+                // validate data
+                if (empty($data['Title'])) {
+                    $data['Title_err'] = 'Please enter Product Title';
+                }
+                if (empty($data['Price'])) {
+                    $data['Price_err'] = 'Please enter Product Price';
+                }
+
+                // check if there is no erreur
+                if (empty($data['Title_err']) && empty($data['Price_err'])) {
+                    // check for validate email
+                    if ($this->productModule->updateProduct($data)) {
+                        redirect('Dashboard/New_arrival');
+                    } else {
+                        die("Something wrong abro");
+                    }
+                } else {
+                    // load view page width error
+                    $this->view('Dash/edit', $data);
+                }
+            } else {
+
+                $productId = $this->productModule->getProductById($id);
+
+                // init data
+                $data = [
+                    'Id' => $productId->Id,
+                    'Image' => $productId->Image,
+                    'Title' => $productId->Title,
+                    'Price' => $productId->Price,
+                    'Image_err' => '',
+                    'Title_err' => '',
+                    'Price_err' => ''
+                ];
+
+                // load view
+                $this->view('Dash/edit', $data);
+            }
+
+        }
+
+        public function delete($id) {
+
+            if ($this->productModule->deleteProduct($id)) {
+                redirect('Dashboard/New_Arrival');
+            } else {
+                die('Ops something wrong');
             }
 
         }
